@@ -34,6 +34,27 @@ echo $Parsedown->text('Hello _Parsedown_!'); # prints: <p>Hello <em>Parsedown</e
 
 More examples in [the wiki](https://github.com/erusev/parsedown/wiki/) and in [this video tutorial](http://youtu.be/wYZBY8DEikI).
 
+
+#### Advanced example with renaming tags/attributes
+
+```php
+$replacements = array(
+	'p' => array(
+		'tag_name' => 'div', // rename <p> to <div>
+		'class' => 'paragraph', // add class="paragraph" attribute to div
+		'data-foo' => 'bar', // add data-foo="bar" attribute to div
+	),
+	'em' => array(
+		'tag_name' => 'span', // rename <em> to <span>
+		'class' => 'em', // add class="em" attribute to em
+	),
+);
+$Parsedown = new Parsedown($replacements);
+
+echo $Parsedown->text('Hello _Parsedown_!'); # prints: <div class="paragraph" data-foo="bar">Hello <span class="em">Parsedown</span>!</div>
+
+```
+
 ### Questions
 
 **How does Parsedown work?**
