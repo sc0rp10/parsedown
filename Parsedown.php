@@ -1471,7 +1471,8 @@ class Parsedown
         return $instance;
     }
 
-    protected function getTagAttributes($tag_name) {
+    protected function getTagAttributes($tag_name)
+    {
         $attrs = [];
 
         if (isset($this->tag_attrs[$tag_name])) {
