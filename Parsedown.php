@@ -1471,11 +1471,6 @@ class Parsedown
         return $instance;
     }
 
-    protected function validateReplacements()
-    {
-
-    }
-
     protected function getTagAttributes($tag_name) {
         $attrs = [];
 
