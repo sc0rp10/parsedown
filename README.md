@@ -45,13 +45,12 @@ $replacements = array(
 		'data-foo' => 'bar', // add data-foo="bar" attribute to div
 	),
 	'em' => array(
-		'tag_name' => 'span', // rename <em> to <span>
-		'class' => 'em', // add class="em" attribute to em
+		'class' => 'em', // don't rename tag, just add class="em" attribute to em
 	),
 );
 $Parsedown = new Parsedown($replacements);
 
-echo $Parsedown->text('Hello _Parsedown_!'); # prints: <div class="paragraph" data-foo="bar">Hello <span class="em">Parsedown</span>!</div>
+echo $Parsedown->text('Hello _Parsedown_!'); # prints: <div class="paragraph" data-foo="bar">Hello <em class="em">Parsedown</em>!</div>
 
 ```
 
