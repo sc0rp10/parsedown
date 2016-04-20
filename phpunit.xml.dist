@@ -3,6 +3,7 @@
 	<testsuites>
 		<testsuite>
 			<file>test/ParsedownTest.php</file>
+			<file>test/ParsedownWithReplacementsTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>

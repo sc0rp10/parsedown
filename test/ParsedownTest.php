@@ -139,7 +139,7 @@ EXPECTED_HTML;
 
     public function testLateStaticBinding()
     {
-        include 'test/TestParsedown.php';
+        include_once 'test/TestParsedown.php';
 
         $parsedown = Parsedown::instance();
         $this->assertInstanceOf('Parsedown', $parsedown);
