@@ -17,7 +17,7 @@ class Parsedown
 {
     # ~
 
-    const version = '1.6.0';
+    const version = '1.7.0';
 
     protected $breaksEnabled;
 
@@ -126,6 +126,14 @@ class Parsedown
     # ~
 
     protected $inlineMarkerList = '!"*_&[:<>`~\\';
+
+    protected $tag_replacements = [];
+
+    public function __construct(array $tag_replacements = [])
+    {
+        $this->validateReplacements($tag_replacements);
+        $this->tag_replacements = $tag_replacements;
+    }
 
     public function text($text)
     {
@@ -1399,5 +1407,10 @@ class Parsedown
         self::$instances[$name] = $instance;
 
         return $instance;
+    }
+
+    protected function validateReplacements()
+    {
+
     }
 }
