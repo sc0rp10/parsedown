@@ -27,6 +27,8 @@ Include `Parsedown.php` or install [the composer package](https://packagist.org/
 ### Example
 
 ``` php
+use Sc\Parsedown\Parsedown;
+
 $Parsedown = new Parsedown();
 
 echo $Parsedown->text('Hello _Parsedown_!'); # prints: <p>Hello <em>Parsedown</em>!</p>
@@ -38,6 +40,8 @@ More examples in [the wiki](https://github.com/erusev/parsedown/wiki/) and in [t
 #### Advanced example with renaming tags/attributes
 
 ```php
+use Sc\Parsedown\Parsedown;
+
 $replacements = array(
 	'p' => array(
 		'tag_name' => 'div', // rename <p> to <div>
