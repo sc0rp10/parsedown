@@ -1,5 +1,7 @@
 <?php
 
+use Sc\Parsedown\Parsedown;
+
 class ParsedownTest extends PHPUnit_Framework_TestCase
 {
     final function __construct($name = null, array $data = array(), $dataName = '')
@@ -142,12 +144,12 @@ EXPECTED_HTML;
         include_once 'test/TestParsedown.php';
 
         $parsedown = Parsedown::instance();
-        $this->assertInstanceOf('Parsedown', $parsedown);
+        $this->assertInstanceOf('Sc\\Parsedown\\Parsedown', $parsedown);
 
         // After instance is already called on Parsedown
         // subsequent calls with the same arguments return the same instance
         $sameParsedown = TestParsedown::instance();
-        $this->assertInstanceOf('Parsedown', $sameParsedown);
+        $this->assertInstanceOf('Sc\\Parsedown\\Parsedown', $sameParsedown);
         $this->assertSame($parsedown, $sameParsedown);
 
         $testParsedown = TestParsedown::instance('test late static binding');

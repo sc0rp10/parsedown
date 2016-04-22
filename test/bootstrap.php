@@ -1,3 +1,3 @@
 <?php
 
-include 'Parsedown.php';
+require 'src/Parsedown.php';

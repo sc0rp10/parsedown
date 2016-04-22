@@ -4,6 +4,8 @@ if (!class_exists('ParsedownTest')) {
     include_once 'ParsedownTest.php';
 }
 
+use Sc\Parsedown\Parsedown;
+
 class ParsedownWithReplacementsTest extends ParsedownTest
 {
     /**
