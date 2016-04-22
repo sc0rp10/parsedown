@@ -1,5 +1,5 @@
 {
-    "name": "erusev/parsedown",
+    "name": "sc/parsedown",
     "description": "Parser for Markdown.",
     "keywords": ["markdown", "parser"],
     "homepage": "http://parsedown.org",
@@ -10,6 +10,11 @@
             "name": "Emanuil Rusev",
             "email": "hello@erusev.com",
             "homepage": "http://erusev.com"
+        },
+        {
+            "name": "Konstantin Zamyakin",
+            "email": "dev@weblab.pro",
+            "homepage": "https://weblab.pro"
         }
     ],
     "require": {
