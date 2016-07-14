@@ -1349,15 +1349,15 @@ class Parsedown
     {
         if (strpos($Excerpt['text'], '>') !== false and preg_match('/^<(\w+:\/{2}[^ >]+)>/i', $Excerpt['text'], $matches)) {
             $url = str_replace(array('&', '<'), array('&amp;', '&lt;'), $matches[1]);
+            list($tag_name, $attrs) = $this->getTagAttributes('a');
+            $attrs['href'] = $url;
 
             return array(
                 'extent' => strlen($matches[0]),
                 'element' => array(
                     'name' => 'a', // we don't touch links
                     'text' => $url,
-                    'attributes' => array(
-                        'href' => $url,
-                    ),
+                    'attributes' => $attrs,
                 ),
             );
         }
