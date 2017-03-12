@@ -1,9 +1,7 @@
-> You might also like [Caret](http://caret.io?ref=parsedown) - our Markdown editor for Mac / Windows / Linux.
-
 ## Parsedown
 
 [![Build Status](https://img.shields.io/travis/sc0rp10/parsedown.svg)](https://travis-ci.org/sc0rp10/parsedown)
-<!--[![Total Downloads](http://img.shields.io/packagist/dt/sc0/parsedown.svg?style=flat-square)](https://packagist.org/packages/sc0/parsedown)-->
+[![Total Downloads](http://img.shields.io/packagist/dt/sc0/parsedown.svg?style=flat-square)](https://packagist.org/packages/sc0/parsedown)
 
 Better Markdown Parser in PHP
 
@@ -17,7 +15,7 @@ Better Markdown Parser in PHP
 * Super Fast
 * [GitHub flavored](https://help.github.com/articles/github-flavored-markdown)
 * Extensible
-* Tested in 5.3 to 7.0 and in HHVM
+* Tested in 5.6 to 7.0 and in HHVM
 * [Markdown Extra extension](https://github.com/erusev/parsedown-extra)
 
 ### Installation
@@ -43,14 +41,14 @@ More examples in [the wiki](https://github.com/erusev/parsedown/wiki/) and in [t
 use Sc\Parsedown\Parsedown;
 
 $replacements = array(
-	'p' => array(
-		'tag_name' => 'div', // rename <p> to <div>
-		'class' => 'paragraph', // add class="paragraph" attribute to div
-		'data-foo' => 'bar', // add data-foo="bar" attribute to div
-	),
-	'em' => array(
-		'class' => 'em', // don't rename tag, just add class="em" attribute to em
-	),
+    'p' => array(
+        'tag_name' => 'div', // rename <p> to <div>
+        'class' => 'paragraph', // add class="paragraph" attribute to div
+        'data-foo' => 'bar', // add data-foo="bar" attribute to div
+    ),
+    'em' => array(
+        'class' => 'em', // don't rename tag, just add class="em" attribute to em
+    ),
 );
 $Parsedown = new Parsedown($replacements);
 
