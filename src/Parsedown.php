@@ -1436,7 +1436,6 @@ class Parsedown
         if (!in_array('', $lines) && substr($trimmedMarkup, 0, 3) === '<p>') {
             $markup = $trimmedMarkup;
             $markup = substr($markup, 3);
-            var_dump($markup);
 
             $position = strpos($markup, '</p>');
 
