@@ -201,6 +201,8 @@ class Parsedown
         # trim line breaks
         $markup = trim($markup, "\n");
 
+        $markup = $this->processParagraphs($markup);
+
         return $markup;
     }
 
@@ -233,7 +235,7 @@ class Parsedown
     # Blocks
     #
 
-    protected function lines(array $lines)
+    protected function lines(array $lines, bool $no_attrs = false)
     {
         $currentBlock = null;
 
@@ -335,7 +337,7 @@ class Parsedown
             } else {
                 $blocks [] = $currentBlock;
 
-                $currentBlock = $this->paragraph($line);
+                $currentBlock = $this->paragraph($line, $no_attrs);
 
                 $currentBlock['identified'] = true;
             }
@@ -729,6 +731,7 @@ class Parsedown
     {
         if (preg_match('/^(['.$line['text'][0].'])([ ]*\1){2,}[ ]*$/', $line['text'])) {
             list($tag_name, $attrs) = $this->getTagAttributes('hr');
+
             $block = [
                 'element' => [
                     'name' => $tag_name,
@@ -750,7 +753,10 @@ class Parsedown
         }
 
         if (chop($line['text'], $line['text'][0]) === '') {
-            $block['element']['name'] = $line['text'][0] === '=' ? 'h1' : 'h2';
+            $tag = $line['text'][0] === '=' ? 'h1' : 'h2';
+            list($tag_name, $attrs) = $this->getTagAttributes($tag);
+            $block['element']['name'] = $tag_name;
+            $block['element']['attributes'] = $attrs;
 
             return $block;
         }
@@ -1034,16 +1040,13 @@ class Parsedown
     # ~
     #
 
-    protected function paragraph($line)
+    protected function paragraph(array $line)
     {
-        list($tag_name, $attrs) = $this->getTagAttributes('p');
-
         $block = [
             'element' => [
-                'name' => $tag_name,
+                'name' => 'p',
                 'text' => $line['text'],
                 'handler' => 'line',
-                'attributes' => $attrs,
             ],
         ];
 
@@ -1475,7 +1478,7 @@ class Parsedown
 
     protected function li($lines)
     {
-        $markup = $this->lines($lines);
+        $markup = $this->lines($lines, true);
 
         $trimmedMarkup = trim($markup);
 
@@ -1490,7 +1493,7 @@ class Parsedown
         return $markup;
     }
 
-    protected function getTagAttributes($tag_name)
+    protected function getTagAttributes(string $tag_name)
     {
         $attrs = [];
 
@@ -1502,5 +1505,28 @@ class Parsedown
         }
 
         return [$tag_name, $attrs];
+    }
+
+    protected function processParagraphs(string $text): string
+    {
+        [$tag_name, $tag_attrs] = $this->getTagAttributes('p');
+
+        if ($tag_name !== 'p' || $tag_attrs) {
+            $markup = "<$tag_name";
+
+            foreach ($tag_attrs as $name => $value) {
+                if ($value === null) {
+                    continue;
+                }
+
+                $markup .= ' '.$name.'="'.$value.'"';
+            }
+
+            $markup = $markup . '>';
+
+            $text = str_replace(['<p>', '</p>'], [$markup, "</$tag_name>"], $text);
+        }
+
+        return $text;
     }
 }
