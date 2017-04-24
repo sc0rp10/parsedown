@@ -1509,7 +1509,7 @@ class Parsedown
 
     protected function processParagraphs($text)
     {
-        [$tag_name, $tag_attrs] = $this->getTagAttributes('p');
+        list($tag_name, $tag_attrs) = $this->getTagAttributes('p');
 
         if ($tag_name !== 'p' || $tag_attrs) {
             $markup = "<$tag_name";
