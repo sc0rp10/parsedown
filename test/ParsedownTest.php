@@ -138,24 +138,4 @@ EXPECTED_HTML;
         $parsedownWithNoMarkup->setMarkupEscaped(true);
         $this->assertEquals($expectedHtml, $parsedownWithNoMarkup->text($markdownWithHtml));
     }
-
-    public function testLateStaticBinding()
-    {
-        include_once 'test/TestParsedown.php';
-
-        $parsedown = Parsedown::instance();
-        $this->assertInstanceOf('Sc\\Parsedown\\Parsedown', $parsedown);
-
-        // After instance is already called on Parsedown
-        // subsequent calls with the same arguments return the same instance
-        $sameParsedown = TestParsedown::instance();
-        $this->assertInstanceOf('Sc\\Parsedown\\Parsedown', $sameParsedown);
-        $this->assertSame($parsedown, $sameParsedown);
-
-        $testParsedown = TestParsedown::instance('test late static binding');
-        $this->assertInstanceOf('TestParsedown', $testParsedown);
-
-        $sameInstanceAgain = TestParsedown::instance('test late static binding');
-        $this->assertSame($testParsedown, $sameInstanceAgain);
-    }
 }
