@@ -40,16 +40,16 @@ More examples in [the wiki](https://github.com/erusev/parsedown/wiki/) and in [t
 ```php
 use Sc\Parsedown\Parsedown;
 
-$replacements = array(
-    'p' => array(
+$replacements = [
+    'p' => [
         'tag_name' => 'div', // rename <p> to <div>
         'class' => 'paragraph', // add class="paragraph" attribute to div
         'data-foo' => 'bar', // add data-foo="bar" attribute to div
-    ),
-    'em' => array(
+    ],
+    'em' => [
         'class' => 'em', // don't rename tag, just add class="em" attribute to em
-    ),
-);
+    ],
+];
 $Parsedown = new Parsedown($replacements);
 
 echo $Parsedown->text('Hello _Parsedown_!'); # prints: <div class="paragraph" data-foo="bar">Hello <em class="em">Parsedown</em>!</div>
