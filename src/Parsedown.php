@@ -1493,7 +1493,7 @@ class Parsedown
         return $markup;
     }
 
-    protected function getTagAttributes(string $tag_name)
+    protected function getTagAttributes($tag_name)
     {
         $attrs = [];
 
@@ -1507,7 +1507,7 @@ class Parsedown
         return [$tag_name, $attrs];
     }
 
-    protected function processParagraphs(string $text): string
+    protected function processParagraphs($text)
     {
         [$tag_name, $tag_attrs] = $this->getTagAttributes('p');
 
