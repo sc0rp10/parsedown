@@ -235,7 +235,7 @@ class Parsedown
     # Blocks
     #
 
-    protected function lines(array $lines, bool $no_attrs = false)
+    protected function lines(array $lines, $no_attrs = false)
     {
         $currentBlock = null;
 
