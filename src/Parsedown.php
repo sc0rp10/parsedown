@@ -746,7 +746,7 @@ class Parsedown
     #
     # Setext
 
-    protected function blockSetextHeader($line, array $block = null)
+    protected function blockSetextHeader($line, ?array $block = null)
     {
         if (!isset($block) || isset($block['type']) || isset($block['interrupted'])) {
             return;
@@ -874,7 +874,7 @@ class Parsedown
     #
     # Table
 
-    protected function blockTable($line, array $block = null)
+    protected function blockTable($line, ?array $block = null)
     {
         if (!isset($block) || isset($block['type']) || isset($block['interrupted'])) {
             return;
